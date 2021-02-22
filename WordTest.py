@@ -22,7 +22,7 @@ class WordTest:
             if 'adj.' not in i and 'vi.' not in i and 'vt.' not in i and 'n.' not in i and 'v.' not in i:
                 times += 1
                 word = i.strip()
-                translation =  self.parse(i.strip())
+                translation =  self.translation(i.strip())
                 # translation =  '哈哈'
                 sheet.append([word,translation,'',f'=IF(A{times+1}=C{times+1},"答对了！","False")'])
                 print('写入成功！')
@@ -38,5 +38,5 @@ class WordTest:
 
 
 
-WordTest().translation('2.22words.txt')
+WordTest().detect('2.22words.txt')
 
