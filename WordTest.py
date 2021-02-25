@@ -31,22 +31,26 @@ class WordTest:
         times = 0
         wb = Workbook()
         sheet = wb.active
-        sheet.append(['word','translation','input','outcome'])
+        sheet.append(['translation','please input it here','outcome','reference'])
         for i in re.findall('[a-z].*?\s+', r_file):
             if 'adj.' not in i and 'vi.' not in i and 'vt.' not in i and 'n.' not in i and 'v.' not in i:
                 times += 1
                 word = i.strip()
                 translation =  self.translation(i.strip())
-                time.sleep(3)
-                sheet.append([word,translation,'',f'=IF(A{times+1}=C{times+1},"答对了！","False")'])
+                time.sleep(1)
+                sheet.append([translation,'',f'=IF(B{times+1}=D{times+1},"答对了！","False")',word])
                 print('写入成功！')
-        for i in range(1,22):
+        for i in range(2,22):
             color = Font(u'宋体', size=11, bold=True, italic=False, strike=False, color='FFFFFF')
-            sheet.cell(row = i,column = 1).font = color
+            sheet.cell(row = i,column = 3).font = color
+            
+        for i in range(2,22):
+            color = Font(u'宋体', size=11, bold=True, italic=False, strike=False, color='FFFFFF')
+            sheet.cell(row = i,column = 4).font = color
+            
 
         print('一共检测到{0}个单词'.format(times))
         wb.save('{}.xlsx'.format(file_name))
-        
 if __name__=="__main__":
     WordTest().detect()
 
