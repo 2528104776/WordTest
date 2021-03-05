@@ -9,8 +9,8 @@ from imp import reload
 
 reload(sys)
 YOUDAO_URL = 'https://openapi.youdao.com/api'
-APP_KEY = '07d9f9da00a90338'
-APP_SECRET = 'zQMV8NDLtKwDySJbMv3f0AoXWwooKm7C'
+APP_KEY = '请填写你的key'
+APP_SECRET = '请填写你的secret'
 
 
 def encrypt(signStr):
